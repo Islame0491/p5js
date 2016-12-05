@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+    
+    <script>
+     var h = 100
+     var r,g,b;
+            var w = 100// Global Variable
+        function setup() {
+            createCanvas(800,600);// canvas size
+            background(200)// background color
+            r = 255;
+            g = 255;
+            b = 255;// red blue and green brightness and hue
+           
+        }
+// the boxes and paints that are drawn
+        function draw() {
+         fill ("green")  
+         rect(30, 500, h , w ,20)
+         fill ("blue")
+         rect(150, 500, h , w ,20)
+         fill("black")
+         rect(270, 500, h , w ,20)
+         fill("red")
+         rect(390,500, h , w , 20)
+         fill("pink")
+         rect(510,500, h , w , 20)
+         fill(0)
+         textSize(25);
+         text("Eraser" , 512, 550);
+         
+         
+        }
+        function mousePressed() {
+        if(mouseX > 30 && mouseX < 130 && mouseY > 500 && mouseY < 600){
+          r = 0;
+          g = 255;
+          b = 0;// if cliched on the green square change color to green
+        }
+         else if(mouseX > 150 && mouseX < 250 && mouseY > 500 && mouseY < 600){
+          r = 0;
+          g = 0;
+          b = 255;//if clicked on the blue square change color to blue
+        }
+         else if(mouseX > 270 && mouseX < 370 && mouseY > 500 && mouseY < 600){
+          r = 0;
+          g = 0;
+          b = 0;//if clicked on the black square change color to black
+        
+        }
+         else if(mouseX > 390 && mouseX < 490 && mouseY > 500 && mouseY < 600){
+          r = 255;
+          g = 0;
+          b = 0;//if clicked on the red square change color to red
+        }
+        else if(mouseX > 510 && mouseX < 610 && mouseY > 500 && mouseY < 600){
+          r = 200;
+          g = 200;
+          b = 200;// eraser changes the same color as the background
+        }
+        }
+        function mouseDragged() { 
+            noStroke();
+            fill(r,g,b);
+            ellipse(mouseX,mouseY, 25,25)//the curser FOLLOWS THE PAINT
+        }
+    </script>
+</head>
+
+<body>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/USERNAME/p5js/blob/gh-pages/FILENAME.html?footer=0"></script>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
+
+
+</html>
