@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <title>Pong</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.13/p5.js"></script>
+  <script>//variables are located down here and used throughout the remix
+    var ballX;
+    var ballY;
+    var ballSpeedX = 0;
+    var ballSpeedY = 0;
+    var paddleHeight = 30;// initial height plus width of paddle 
+    var paddleWidth = 200;
+    var score = 0;
+
+    function setup() {
+      createCanvas(800, 600);
+      noCursor();
+      ballX = width / 2;  
+      ballY = height / 2;
+    }
+
+    function draw() {// starts the functions we declared below
+      background(128);// background color
+      moveBall();
+      checkCollide();
+      drawPaddle();
+      drawBall();
+      text("score " + score, 50,height/4)// prints out the score on the screen
+    }
+
+    function mousePressed() {
+      ballSpeedX = 5;// sets sppeds
+      ballSpeedY = 5;
+    }
+
+    function moveBall() {
+      ballX = ballX + ballSpeedX;// horizontal moving component
+      ballY = ballY + ballSpeedY;//vertical one
+
+      console.log("ballSpeedX: " + ballSpeedX +
+        ", ballSpeedY: " + ballSpeedY);
+    }
+
+    function checkCollide() {
+      if (ballX < 0 || ballX > width) {
+        ballSpeedX = ballSpeedX * -1;
+      }
+      if (ballY < 0) {
+        ballSpeedY = ballSpeedY * -1;
+      }
+      if (ballY > height - paddleHeight) {//if it hits the paddle take of 10 from the width
+        if (ballX > mouseX && ballX < mouseX + paddleWidth) {
+          paddleWidth = constrain(paddleWidth, 20, 200)
+          paddleWidth -= 10;
+          ballSpeedY = ballSpeedY * -1.1;
+          score++;//if it hits make the score go up
+        }
+        else {
+          text("GAME OVER!", width / 2, height / 2);// if the ball misses it says game over
+          noLoop();
+          
+        }
+      }
+    }
+
+    function drawBall() {
+      noStroke();// removes the line arount the circle
+      ellipse(ballX, ballY, 20, 20);// ball coords
+    }
+
+    function drawPaddle() {
+      strokeWeight(4);
+      rect(mouseX, height - paddleHeight - 4, paddleWidth, paddleHeight);
+    }
+  </script>
+</head>
+
+<body>
+<form><input TYPE="button" onClick="history.
+  go(0)" value="Reset"></form>
+
+<body>
+   <div id="code" class="container-fluid">
+       <script src="https://gist-it.appspot.com/github/Islame0491/p5js/blob/gh-pages/pong-project.html?footer=0"></script>
+   </div>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+   <script>
+       $(window).bind("load", function() {
+           $('#code').before($('#defaultCanvas0').remove());
+       });
+   </script>
+</body>
+
+
+
