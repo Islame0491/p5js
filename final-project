@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+    
+    <script>
+
+        var bg;
+        var bg2;
+        var bg3
+        var bg4
+        var y = 0;
+        var Q1
+        var Question1 = Q1
+        var Q2
+        var Question2 = Q2
+        // variables that are used
+    
+    function keyPressed(){
+        
+        //following code will be activated by pressing a certain key
+      if (key=="S" || key == "s") {
+        Q1 = prompt("Do you choose to scream for help or find a way out of the forest? Options: 'scream' or 'forest'")
+      //
+      }
+      
+      if (key=="Y" || key == "y") {
+        Q2 = prompt("Do you choose to go towards the wind or the smoke? Options: 'wind' or 'smoke'")
+      //choice user can do
+        
+      }
+      
+    }
+      
+    
+    
+    function setup() {
+    bg1 = loadImage("CrashedPlane.jpg");
+    bg2 = loadImage("BearAttack.jpg");//pics used for te project
+    bg3 = loadImage("Forest1.jpg")
+    //bg4 = loadImage("Turbine.jpg")
+    createCanvas(720, 400);
+    }
+
+    function draw() {
+        
+    background(bg1);
+
+        stroke(226, 204, 0);// the text that appears/ dialague
+
+        y++;
+        if (y > height) {
+        y = 0;
+        fill(255)
+        rect(90,250,400,100)
+        textSize(15)
+        fill(0)
+        text("You wake up with no memory of what has just happened...", 95, 275)
+        text("You have woken up in a crashed plane in a forest...", 95, 300)
+        text("You're not too hurt, and you manage to escape the plane...", 95, 325)
+        text("Let's try and help you escape, press S to begin...", 95, 348)
+       // "red"
+        ellipse(50,50,50,50)
+        
+        }
+        
+        
+        if (Q1 == "scream"){
+            background(bg2); //choice 1
+            
+        stroke(226, 204, 0);
+
+        y++;
+        if (y > height) {
+        y = 0;
+            }  
+        fill(255)
+        rect(90,250,400,100)
+        textSize(15)
+        fill(0)
+        text("Your screaming has attracted a wild grizzly bear...", 95, 275)
+        text("You try and run but the bear is too fast...", 95, 300)//outcomes
+        text("The bear pins you down and eats you up...", 95, 325)
+        text("You have died, refresh page to start again...", 95, 348)
+            
+        }
+        
+         if (Q1 == "forest"){
+            background(bg3); 
+            
+        stroke(226, 204, 0);
+
+        y++;
+        if (y > height) {
+        y = 0;
+            }  
+        fill(255)
+        rect(90,250,400,100)
+        textSize(15)
+        fill(0)
+        text("You run into the forest...", 95, 275)
+        text("It seems peaceful and a bit windy....", 95, 300)
+        text("In a distance you notice some smoke...", 95, 325)
+        text("Press Y to make your next decision...", 95, 348)   
+        
+    }    
+
+   
+    
+      var bubble1;
+      var bubble2;
+      
+      function setup() {
+        createCanvas(500,500);
+        
+        bubble1 = new Bubble();
+        bubble2 = new Bubble();
+      }
+      
+      function draw() {
+        background(0);
+
+        bubble1.move();
+        bubble1.display();
+        
+        bubble2.move();
+        bubble2.display();
+      }
+      
+      function Bubble(){
+        this.x = random(width);
+        this.y = random(height);
+        
+        this.move = function(){
+          this.x += random(-1,1);
+          this.y += random(-2,0);
+        }
+
+        this.display = function(){
+          stroke(255);
+          noFill();
+          ellipse(this.x,this.y,50,50);// object when u die bubble screen comes
+        }
+      }
+    
+    
+        
+        
+    }
+     </script>
+</head>
+
+<body>
+   <div id="code" class="container-fluid">
+       <script src="https://gist-it.appspot.com/github/islame0491/p5js/blob/gh-pages/final-project.html?footer=0"></script>
+   </div>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+   <script>
+       $(window).bind("load", function() {
+           $('#code').before($('#defaultCanvas').remove());
+       });
+   </script>
+</body>
+
+
+</html>
